@@ -14,6 +14,7 @@
 }
 
 .headerObjectBlock {
+    width: 17%;
     display: flex;
     flex-direction: row;
 }
@@ -21,7 +22,7 @@
 .headerObject {
     color: white;
     height: 7vh;
-    width: 130px;
+    width: 50%;
     background-color: cornflowerblue;
     border: 0px;
     padding-left: 12px;

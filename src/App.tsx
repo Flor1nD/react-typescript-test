@@ -70,8 +70,7 @@ function App() {
                         display: 'flex',
                         flexDirection: "column",
                         alignItems: "center",
-                        width: '50vw',
-                        border: "1px solid black",
+                        width: '100%',
 
                     }}>
                         {posts.slice(0, posts.length).map((post) => (
