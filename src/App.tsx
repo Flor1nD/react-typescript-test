@@ -15,7 +15,8 @@ function App() {
 
     const setPost = async ()=> {
         try {
-            const response = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=7')
+            console.log("Загрузка...");
+            const response = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=3')
 
             if (!response) {
                 throw new Error('Unable to fetch posts.')
@@ -49,7 +50,14 @@ function App() {
 
             {posts.length > 0 &&
                 (
-                    <div style={{ display: 'flex', flexDirection: "column", alignItems: "center" }}>
+                    <div style={{
+                        display: 'flex',
+                        flexDirection: "column",
+                        alignItems: "center",
+                        width: '50vw',
+                        border: "1px solid black",
+
+                    }}>
                         {posts.slice(0, posts.length).map((post) => (
                             <div key={post.id} style={{ margin: '10px', border: "1px solid black", borderRadius: '10px', padding: '5px', width: "75%" }}>
                                 <h3>{post.title}</h3>
