@@ -12,11 +12,14 @@ interface post {
 
 function App() {
     const [posts, setPosts] = useState<post[]>([])
+    const [loading, setLoading] = useState<boolean>(false)
+    const [error, setError] = useState<string | null>(null)
 
     const setPost = async ()=> {
         try {
+            setLoading(true);
             console.log("Загрузка...");
-            const response = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=3')
+            const response = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=13')
 
             if (!response) {
                 throw new Error('Unable to fetch posts.')
@@ -25,7 +28,14 @@ function App() {
             setPosts(data);
         }
         catch (err) {
-            console.error(err)
+            if (err instanceof Error) {
+                setError(err.message);
+            } else {
+                setError('An unknown error occurred');
+            }
+        }
+        finally {
+            setLoading(false);
         }
     }
 
@@ -38,8 +48,8 @@ function App() {
             <div className="header">
                 <div className="headerObjectBlock">
                     <a className="headerObject">object1</a>
-                    <button className="headerObject" onClick={setPost}>
-                        Сгенерить посты
+                    <button className="headerObject" onClick={setPost} disabled={loading}>
+                        {loading ? "Загрузка..." : "Сгенерить посты"}
                     </button>
                 </div>
                 <div className="headerObjectBlock">
@@ -47,6 +57,12 @@ function App() {
                     <a className="headerObject"><img src={reactLogo} alt="Vite Logo" /></a>
                 </div>
             </div>
+
+            {error && (
+                <div style={{ color: 'red' }}>
+                    Ошибка: {error}
+                </div>
+            )}
 
             {posts.length > 0 &&
                 (
