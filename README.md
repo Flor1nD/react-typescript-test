@@ -1,19 +1,19 @@
 # React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Этот шаблон обеспечивает минимальную настройку для работы React в Vite с HMR и некоторыми правилами ESLint.
 
-Currently, two official plugins are available:
+В настоящее время доступны два официальных плагина:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) использует [Babel](https://babeljs.io/) (или [oxc](https://oxc.rs) когда используется в [rolldown-vite](https://vite.dev/guide/rolldown)) для Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) использует [SWC](https://swc.rs/) для Fast Refresh
 
-## React Compiler
+## React Компилятор
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Компилятор React не включен в этом шаблоне, поскольку он влияет на производительность разработки и сборки. Чтобы добавить его, смотрите: [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Expanding the ESLint configuration
+## Расширение конфигурации ESLint
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Если вы разрабатываете производственное приложение, мы рекомендуем обновить конфигурацию, чтобы включить правила линтинга с учетом типов:
 
 ```js
 export default defineConfig([
@@ -43,7 +43,7 @@ export default defineConfig([
 ])
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Вы так же можете установить [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) и [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) для React-специфичных правил линта:
 
 ```js
 // eslint.config.js
