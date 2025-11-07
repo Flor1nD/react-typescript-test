@@ -1,40 +1,84 @@
-.header {
-    width: 100%;
-    height: 7vh;
-    background-color: cornflowerblue;
-    padding-left: 2vw;
-    padding-right: 2vw;
+@media (max-width: 768px) {
+    .header {
+        width: 100%;
+        height: 7vh;
+        background-color: blueviolet;
+        padding-left: 2vw;
+        padding-right: 2vw;
 
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+    }
+
+    .headerObjectBlock {
+        width: 45%;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .headerObject {
+        color: white;
+        height: 7vh;
+        width: 50%;
+        background-color: blueviolet;
+        border: 0px;
+        padding-left: 12px;
+        padding-right: 12px;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .headerObject:hover {
+        background-color: white;
+        color: black;
+    }
 }
+@media (min-width: 768px) {
+    .header {
+        width: 100%;
+        height: 7vh;
+        background-color: blueviolet;
+        padding-left: 2vw;
+        padding-right: 2vw;
 
-.headerObjectBlock {
-    width: 17%;
-    display: flex;
-    flex-direction: row;
-}
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+    }
 
-.headerObject {
-    color: white;
-    height: 7vh;
-    width: 50%;
-    background-color: cornflowerblue;
-    border: 0px;
-    padding-left: 12px;
-    padding-right: 12px;
+    .headerObjectBlock {
+        width: 17%;
+        display: flex;
+        flex-direction: row;
+    }
 
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
+    .headerObject {
+        color: white;
+        height: 7vh;
+        width: 50%;
+        background-color: blueviolet;
+        border: 0px;
+        padding-left: 12px;
+        padding-right: 12px;
 
-.headerObject:hover {
-    background-color: white;
-    color: black;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .headerObject:hover {
+        background-color: white;
+        color: black;
+    }
 }
