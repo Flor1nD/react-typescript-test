@@ -1,32 +1,26 @@
-import { useState, type ChangeEvent } from 'react'
+import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
 
 interface post {
-    name: string;
-    country: string;
-    domains: string[];
-    web_pages: string[];
+    userId: number;
+    id: number;
+    title: string;
+    body: string;
 }
 
 function App() {
     const [posts, setPosts] = useState<post[]>([])
     const [loading, setLoading] = useState<boolean>(false)
     const [error, setError] = useState<string | null>(null)
-    const [selectedCountry, setSelectedCountry] = useState<string>('');
 
-    const handleCountryChange = (event: ChangeEvent<HTMLSelectElement>): void => {
-        const countryValue: string = event.target.value;
-        setSelectedCountry(countryValue);
-    };
-
-    const setPost = async (nameCountry: string)=> {
+    const setPost = async ()=> {
         try {
             setLoading(true);
             console.log("Загрузка...");
-            const response = await fetch(`http://universities.hipolabs.com/search?country=${nameCountry}`)
+            const response = await fetch(`http://jsonplaceholder.typicode.com/posts?_limit=3`)
 
             if (!response) {
                 throw new Error('Unable to fetch posts.')
@@ -46,15 +40,18 @@ function App() {
         }
     }
 
-    // const deletePost = (postId: number)=> {
-    //     setPosts(posts.filter((post) => post.id !== postId))
-    // }
+    const deletePost = (postId: number)=> {
+        setPosts(posts.filter((post) => post.id !== postId))
+    }
 
     return (
         <>
             <div className="header">
                 <div className="headerObjectBlock">
-                    <a className="headerObject">Поиск университетов по стране</a>
+                    <a className="headerObject">object1</a>
+                    <button className="headerObject" disabled={loading} onClick={() =>  setPost()}>
+                        {loading ? "Загрузка..." : "Сгенерить посты"}
+                    </button>
                 </div>
                 <div className="headerObjectBlock">
                     <a className="headerObject"><img src={viteLogo} alt="Vite Logo" /></a>
@@ -63,20 +60,6 @@ function App() {
             </div>
 
             <div className="body">
-
-                <select value={selectedCountry} onChange={handleCountryChange}>
-                    <option value="">Выберите страну</option>
-                    <option value="Russian Federation">Россия</option>
-                    <option value="Kazakhstan">Казахстан</option>
-                    <option value="India">Индия</option>
-                    <option value="France">Франция</option>
-                    <option value="Germany">Германия</option>
-
-                </select>
-
-                <button disabled={loading || !selectedCountry} onClick={() =>  setPost(selectedCountry)}>
-                    {loading ? "Загрузка..." : "Сгенерить универы"}
-                </button>
 
                 {error && (
                     <div style={{ color: 'red' }}>
@@ -94,29 +77,22 @@ function App() {
 
                         }}>
                             {posts.slice(0, posts.length).map((post) => (
-                                <div /*key={post.id}*/ style={{ margin: '10px', border: "1px solid black", padding: '15px', borderRadius: '10px', width: "80%" }}>
-                                    <h3>{post.name}</h3>
-                                    <p>{post.country}</p>
-                                    {post.web_pages.slice(0, post.web_pages.length).map((web_page) => (
-                                        <div>
-                                            <a style={{textDecoration: "none"}} href={web_page} target={"_blank"}>{web_page}</a>
-                                            <br/>
-                                        </div>
+                                <div key={post.id} style={{ margin: '10px', border: "1px solid black", padding: '15px', borderRadius: '10px', width: "80%" }}>
+                                    <h3>{post.title}</h3>
+                                    <p>{post.body}</p>
+                                    <button onClick={() => {
+                                        deletePost(post.id);
+                                    }}
+                                            style={{
+                                                padding: '6px',
+                                                backgroundColor: 'red',
+                                                border: '1px solid red',
+                                                borderRadius: '35px',
+                                                color: 'white',
 
-                                    ))}
-                                    {/*<button onClick={() => {*/}
-                                    {/*    deletePost(post.id);*/}
-                                    {/*}}*/}
-                                    {/*        style={{*/}
-                                    {/*            padding: '6px',*/}
-                                    {/*            backgroundColor: 'red',*/}
-                                    {/*            border: '1px solid red',*/}
-                                    {/*            borderRadius: '35px',*/}
-                                    {/*            color: 'white',*/}
-
-                                    {/*        }}>*/}
-                                    {/*    Удалить*/}
-                                    {/*</button>*/}
+                                            }}>
+                                        Удалить
+                                    </button>
                                 </div>
                             ))}
                         </div>
