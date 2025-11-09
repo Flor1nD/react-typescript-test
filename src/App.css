@@ -23,7 +23,7 @@
     .headerObject {
         color: white;
         height: 100%;
-        width: 50%;
+        width: 100%;
         background-color: blueviolet;
         border: 0;
         padding: 0 12px;
@@ -67,7 +67,7 @@
     .headerObject {
         color: white;
         height: 100%;
-        width: 50%;
+        width: 100%;
         background-color: blueviolet;
         border: 0px;
         padding: 0 12px;
@@ -89,5 +89,24 @@
         align-items: center;
         margin-top: 25px;
         margin-bottom: 25px;
+    }
+
+
+    .body select {
+        width: 50%;
+        text-align: center;
+        background-color: blueviolet;
+        color: white;
+        font-size: 26px;
+        padding: 10px;
+    }
+
+    .body button {
+        width: 50%;
+        text-align: center;
+        background-color: darkgreen;
+        color: white;
+        font-size: 26px;
+        padding: 10px;
     }
 }
