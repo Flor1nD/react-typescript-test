@@ -54,7 +54,7 @@ function App() {
                 </div>
                 <div className="headerObjectBlock">
                     <a className="headerObject"><img src={viteLogo} alt="Vite Logo" /></a>
-                    <a className="headerObject"><img src={reactLogo} alt="Vite Logo" /></a>
+                    <a className="headerObject"><img src={reactLogo} alt="React Logo" /></a>
                 </div>
             </div>
 
