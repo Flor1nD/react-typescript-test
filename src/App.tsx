@@ -58,43 +58,46 @@ function App() {
                 </div>
             </div>
 
-            {error && (
-                <div style={{ color: 'red' }}>
-                    Ошибка: {error}
-                </div>
-            )}
-
-            {posts.length > 0 &&
-                (
-                    <div style={{
-                        display: 'flex',
-                        flexDirection: "column",
-                        alignItems: "center",
-                        width: '100%',
-
-                    }}>
-                        {posts.slice(0, posts.length).map((post) => (
-                            <div key={post.id} style={{ margin: '10px', border: "1px solid black", borderRadius: '10px', padding: '5px', width: "75%" }}>
-                                <h3>{post.title}</h3>
-                                <p>{post.body}</p>
-                                <button onClick={() => {
-                                    deletePost(post.id);
-                                }}
-                                style={{
-                                    padding: '6px',
-                                    backgroundColor: 'red',
-                                    border: '1px solid red',
-                                    borderRadius: '35px',
-                                    color: 'white',
-
-                                }}>
-                                    Удалить
-                                </button>
-                            </div>
-                        ))}
+            <div className="body">
+                {error && (
+                    <div style={{ color: 'red' }}>
+                        Ошибка: {error}
                     </div>
-                )
-            }
+                )}
+
+                {posts.length > 0 &&
+                    (
+                        <div style={{
+                            border: '1px solid red',
+                            display: 'flex',
+                            flexDirection: "column",
+                            alignItems: "center",
+                            width: '75%',
+
+                        }}>
+                            {posts.slice(0, posts.length).map((post) => (
+                                <div key={post.id} style={{ margin: '10px', border: "1px solid black", padding: '15px', borderRadius: '10px', width: "80%" }}>
+                                    <h3>{post.title}</h3>
+                                    <p>{post.body}</p>
+                                    <button onClick={() => {
+                                        deletePost(post.id);
+                                    }}
+                                            style={{
+                                                padding: '6px',
+                                                backgroundColor: 'red',
+                                                border: '1px solid red',
+                                                borderRadius: '35px',
+                                                color: 'white',
+
+                                            }}>
+                                        Удалить
+                                    </button>
+                                </div>
+                            ))}
+                        </div>
+                    )
+                }
+            </div>
 
         </>
     )
