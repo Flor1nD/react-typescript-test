@@ -20,7 +20,7 @@ function App() {
         try {
             setLoading(true);
             console.log("Загрузка...");
-            const response = await fetch(`http://jsonplaceholder.typicode.com/posts?_limit=3`)
+            const response = await fetch(`https://jsonplaceholder.typicode.com/posts?_limit=3`)
 
             if (!response) {
                 throw new Error('Unable to fetch posts.')
