@@ -45,10 +45,11 @@
 
     .body select {
         width: 50%;
+        height: fit-content;
         text-align: center;
         background-color: blueviolet;
         color: white;
-        font-size: 26px;
+        font-size: 14px;
         padding: 10px;
     }
 
@@ -57,7 +58,7 @@
         text-align: center;
         background-color: darkgreen;
         color: white;
-        font-size: 26px;
+        font-size: 14px;
         padding: 10px;
     }
 }
