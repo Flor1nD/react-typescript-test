@@ -54,21 +54,24 @@ function App() {
                 </div>
             </div>
 
-            <div className="body">
+            <div className="container">
                 {appState.slice(0, appState.length).map((post) => (
-                    <div>
-                        <p>{post.text}</p>
+                    <div className="container-block">
                         <input type="checkbox" checked={post.completed} disabled={true}/>
+                        <p>{post.text}</p>
+
                     </div>
                 ))}
             </div>
             
-            <div>
+            <div className="container">
+
                 <input type="text" value={text} onChange={(e) => setText(e.target.value)} />
                 <br/>
                 <input type="checkbox" checked={completed} onChange={(e) => setCompleted(e.target.checked)} />
                 <br/>
                 <button onClick={() => sendToDo(text, appState.length, completed)}>Добавить пост</button>
+
             </div>
 
         </>
