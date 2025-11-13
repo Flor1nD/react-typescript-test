@@ -1,57 +1,33 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import axios from 'axios'
 
-
-interface post {
-    userId: number;
+interface todo {
+    text: string;
+    completed: boolean;
     id: number;
-    title: string;
-    body: string;
 }
 
 function App() {
-    const [posts, setPosts] = useState<post[]>([])
-    const [loading, setLoading] = useState<boolean>(false)
-    const [error, setError] = useState<string | null>(null)
+    const [appState, setAppState] = useState<todo[]>([]);
 
-    const setPost = async ()=> {
-        try {
-            setLoading(true);
-            console.log("Загрузка...");
-            const response = await fetch(`https://jsonplaceholder.typicode.com/posts?_limit=3`)
 
-            if (!response) {
-                throw new Error('Unable to fetch posts.')
-            }
-            const data = await response.json();
-            setPosts(data);
-        }
-        catch (err) {
-            if (err instanceof Error) {
-                setError(err.message);
-            } else {
-                setError('An unknown error occurred');
-            }
-        }
-        finally {
-            setLoading(false);
-        }
-    }
+    useEffect(() => {
+        const apiUrl = 'http://89.169.3.47:8080/api/todos';
+        axios.get(apiUrl).then((resp) => {
+            const allPersons = resp.data;
+            setAppState(allPersons);
+        });
+    }, [setAppState]);
 
-    const deletePost = (postId: number)=> {
-        setPosts(posts.filter((post) => post.id !== postId))
-    }
 
     return (
         <>
             <div className="header">
                 <div className="headerObjectBlock">
                     <a className="headerObject">object1</a>
-                    <button className="headerObject" disabled={loading} onClick={() =>  setPost()}>
-                        {loading ? "Загрузка..." : "Сгенерить посты"}
-                    </button>
                 </div>
                 <div className="headerObjectBlock">
                     <a className="headerObject"><img src={viteLogo} alt="Vite Logo" /></a>
@@ -60,44 +36,11 @@ function App() {
             </div>
 
             <div className="body">
-
-                {error && (
-                    <div style={{ color: 'red' }}>
-                        Ошибка: {error}
+                {appState.slice(0, appState.length).map((post) => (
+                    <div>
+                        <p>{post.text}</p>
                     </div>
-                )}
-
-                {posts.length > 0 &&
-                    (
-                        <div style={{
-                            display: 'flex',
-                            flexDirection: "column",
-                            alignItems: "center",
-                            width: '75%',
-
-                        }}>
-                            {posts.slice(0, posts.length).map((post) => (
-                                <div key={post.id} style={{ margin: '10px', border: "1px solid black", padding: '15px', borderRadius: '10px', width: "80%" }}>
-                                    <h3>{post.title}</h3>
-                                    <p>{post.body}</p>
-                                    <button onClick={() => {
-                                        deletePost(post.id);
-                                    }}
-                                            style={{
-                                                padding: '6px',
-                                                backgroundColor: 'red',
-                                                border: '1px solid red',
-                                                borderRadius: '35px',
-                                                color: 'white',
-
-                                            }}>
-                                        Удалить
-                                    </button>
-                                </div>
-                            ))}
-                        </div>
-                    )
-                }
+                ))}
             </div>
 
         </>
