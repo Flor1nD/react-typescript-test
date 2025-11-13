@@ -12,6 +12,10 @@ interface todo {
 
 function App() {
     const [appState, setAppState] = useState<todo[]>([]);
+    const [text, setText] = useState('');
+    const [completed, setCompleted] = useState(false);
+    const apiUrl = 'http://89.169.3.47:8080/api/todos';
+
 
 
     useEffect(() => {
@@ -20,8 +24,23 @@ function App() {
             const allPersons = resp.data;
             setAppState(allPersons);
         });
+
+
     }, [setAppState]);
 
+    const sendToDo = async (text: string, id: number, completed: boolean) => {
+        const response = await axios.post(apiUrl, {
+            text: text,
+            completed: completed,
+            id: id,
+        })
+
+        setAppState(prevState => [...prevState, response.data]);
+
+        // Очищаем поля ввода
+        setText('');
+        setCompleted(false);
+    }
 
     return (
         <>
@@ -39,8 +58,17 @@ function App() {
                 {appState.slice(0, appState.length).map((post) => (
                     <div>
                         <p>{post.text}</p>
+                        <input type="checkbox" checked={post.completed} disabled={true}/>
                     </div>
                 ))}
+            </div>
+            
+            <div>
+                <input type="text" value={text} onChange={(e) => setText(e.target.value)} />
+                <br/>
+                <input type="checkbox" checked={completed} onChange={(e) => setCompleted(e.target.checked)} />
+                <br/>
+                <button onClick={() => sendToDo(text, appState.length, completed)}>Добавить пост</button>
             </div>
 
         </>
