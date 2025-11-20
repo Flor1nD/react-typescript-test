@@ -61,6 +61,10 @@
         font-size: 14px;
         padding: 10px;
     }
+
+    .rofl-block {
+        font-size: 35px;
+    }
 }
 @media (min-width: 1024px) {
     .header {
@@ -128,5 +132,8 @@
         color: white;
         font-size: 26px;
         padding: 10px;
+    }
+    .rofl-block {
+        font-size: 90px;
     }
 }

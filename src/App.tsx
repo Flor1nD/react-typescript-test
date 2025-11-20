@@ -54,7 +54,7 @@ function App() {
         <>
             <div className="header">
                 <div className="headerObjectBlock">
-                    <a className="headerObject">Поиск университетов по стране</a>
+                    <a className="headerObject">ЧЕ ЗА ХУЙНЯЯЯ</a>
                 </div>
                 <div className="headerObjectBlock">
                     <a className="headerObject"><img src={viteLogo} alt="Vite Logo" /></a>
@@ -62,7 +62,7 @@ function App() {
                 </div>
             </div>
 
-            <div style={{backgroundColor: "white", fontSize: "90px"}}>
+            <div className="rofl-block">
                 <p>／\￣ ＼</p>
                 <p>|　　　  \</p>
                 <p>＼  _＿ ノ\</p>
@@ -77,7 +77,7 @@ function App() {
             <div className="body">
 
                 <select value={selectedCountry} onChange={handleCountryChange}>
-                    <option value="">Выберите страну</option>
+                    <option value="">КУДА ПОЙДЕШЬ НАХУЙ??</option>
                     <option value="Russian Federation">Россия</option>
                     <option value="Kazakhstan">Казахстан</option>
                     <option value="India">Индия</option>
