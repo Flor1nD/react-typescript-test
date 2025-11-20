@@ -62,6 +62,18 @@ function App() {
                 </div>
             </div>
 
+            <div style={{backgroundColor: "white", fontSize: "90px"}}>
+                <p>／\￣ ＼</p>
+                <p>|　　　  \</p>
+                <p>＼  _＿ ノ\</p>
+                <p>　＼　 _ノ\</p>
+                <p>　　＼　ノ \</p>
+                <p>　　　＼ ノ \</p>
+                <p>　　　　＼ノ\／￣＼</p>
+                <p>　　　／￣＼ ＼＿／</p>
+                <p>　　　＼＿／</p>
+            </div>
+
             <div className="body">
 
                 <select value={selectedCountry} onChange={handleCountryChange}>
