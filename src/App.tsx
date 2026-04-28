@@ -3,6 +3,14 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
+// Функция для преобразования HTTP в HTTPS через CORS proxy
+const convertToHttps = (url: string): string => {
+    const corsProxy = 'https://cors-anywhere.herokuapp.com/';
+    if (url.startsWith('http://')) {
+        return corsProxy + url;
+    }
+    return url;
+};
 
 interface post {
     name: string;
@@ -26,7 +34,8 @@ function App() {
         try {
             setLoading(true);
             console.log("Загрузка...");
-            const response = await fetch(`http://universities.hipolabs.com/search?country=${nameCountry}`)
+            const apiUrl = convertToHttps(`http://universities.hipolabs.com/search?country=${nameCountry}`);
+            const response = await fetch(apiUrl)
 
             if (!response) {
                 throw new Error('Unable to fetch posts.')
